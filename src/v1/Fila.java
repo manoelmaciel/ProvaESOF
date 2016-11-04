@@ -14,15 +14,32 @@ public class Fila {
 		pessoas.remove(p);
 	}
 	
+//	public Pessoa proximoFila(){
+//		Pessoa proximo = null;
+//		
+//		proximo = verificaGravida();
+//		
+//		if(proximo == null)
+//			proximo = pessoas.get(0);
+//		
+//		return proximo;
+//	}
+//
 	public Pessoa proximoFila(){
 		Pessoa proximo = null;
 		
-		proximo = verificaGravida();
-		
-		if(proximo == null)
-			proximo = pessoas.get(0);
-		
-		return proximo;
+		if (pessoas.isEmpty()) { // Solução do problema da fila vazia ... !
+			System.out.println("Fila vazia ... !");
+		} else {
+			proximo = verificaIdoso();
+			if (proximo == null) { 
+				proximo = verificaGravida();
+				if (proximo == null)					
+					proximo = pessoas.get(0);
+			}
+			
+		}		
+		return proximo;		
 	}
 	
 	public Pessoa verificaGravida(){
